@@ -1,6 +1,6 @@
 import 'package:reff_shared/core/models/models.dart';
 
-class Mocks {
+mixin Mocks {
   static final _initialDay = DateTime(
       DateTime.now().year, DateTime.now().month, DateTime.now().day, 8);
 
@@ -30,7 +30,7 @@ class Mocks {
         id: "1",
         point: 10,
         age: 27,
-        gender: Gender.OTHERS,
+        gender: Gender.others,
         city: CityModel(
             countryCode: "tr",
             langCode: "tr",
@@ -42,7 +42,7 @@ class Mocks {
         id: "2",
         point: 10,
         age: 27,
-        gender: Gender.MALE,
+        gender: Gender.male,
         city: CityModel(
             countryCode: "tr",
             langCode: "tr",
@@ -165,7 +165,7 @@ class Mocks {
       answerID: "1",
       city: CityModel.cities.first,
       age: 18,
-      gender: Gender.MALE,
+      gender: Gender.male,
       createdDate: _initialDay.millisecondsSinceEpoch,
     ),
     VoteModel(
@@ -175,7 +175,7 @@ class Mocks {
       answerID: "2",
       city: CityModel.cities.first,
       age: 18,
-      gender: Gender.MALE,
+      gender: Gender.male,
       createdDate: _initialDay.millisecondsSinceEpoch,
     ),
     VoteModel(
@@ -185,7 +185,7 @@ class Mocks {
       answerID: "3",
       city: CityModel.cities.first,
       age: 18,
-      gender: Gender.MALE,
+      gender: Gender.male,
       createdDate: _initialDay.millisecondsSinceEpoch,
     ),
   ];
@@ -217,22 +217,22 @@ class Mocks {
         id: "1",
         content: "content",
         imageUrl: "imageUrl",
-        color: MyColor.AMBER),
+        color: MyColor.amber),
     AnswerModel(
         id: "2",
         content: "content",
         imageUrl: "imageUrl",
-        color: MyColor.AMBER),
+        color: MyColor.amber),
     AnswerModel(
         id: "3",
         content: "content",
         imageUrl: "imageUrl",
-        color: MyColor.AMBER),
+        color: MyColor.amber),
     AnswerModel(
         id: "4",
         content: "content",
         imageUrl: "imageUrl",
-        color: MyColor.AMBER),
+        color: MyColor.amber),
   ];
   static final answersJson = [
     {"id": "1", "content": "content", "imageUrl": "imageUrl", "color": "AMBER"},

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:reff_shared/core/models/models.dart';
 import 'package:reff_shared/core/utils/constants.dart';
-import 'package:logging/logging.dart';
 
 abstract class BaseVoteApi {
   Future<String> add(VoteModel vote);
@@ -10,12 +9,12 @@ abstract class BaseVoteApi {
 }
 
 class VoteFirebaseApi implements BaseVoteApi {
-  final _logger = Logger("VoteApi");
+  // final _logger = Logger("VoteApi");
 
   FirebaseFirestore _instance;
 
   VoteFirebaseApi({FirebaseFirestore instance}) {
-    this._instance = instance ?? FirebaseFirestore.instance;
+    _instance = instance ?? FirebaseFirestore.instance;
   }
 
   Future<List<VoteModel>> getsByQuestion(String questionID) async {
@@ -24,8 +23,9 @@ class VoteFirebaseApi implements BaseVoteApi {
         .where('questionID', isEqualTo: questionID)
         .get();
 
-    if (votesDocuments.docs == null && votesDocuments.docs.isEmpty)
+    if (votesDocuments.docs == null && votesDocuments.docs.isEmpty) {
       return <VoteModel>[];
+    }
 
     final votes = votesDocuments.docs
         .map((voteDocument) => VoteModel.fromJson(voteDocument.data()))
@@ -42,8 +42,9 @@ class VoteFirebaseApi implements BaseVoteApi {
         .where("answerID", isEqualTo: answerID)
         .get();
 
-    if (votesDocuments.docs == null && votesDocuments.docs.isEmpty)
+    if (votesDocuments.docs == null && votesDocuments.docs.isEmpty) {
       return <VoteModel>[];
+    }
 
     final votes = votesDocuments.docs
         .map((voteDocument) => VoteModel.fromJson(voteDocument.data()))

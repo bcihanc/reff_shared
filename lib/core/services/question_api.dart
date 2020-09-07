@@ -25,11 +25,11 @@ class QuestionFirestoreApi extends BaseQuestionApi {
 
   FirebaseFirestore _instance;
   QuestionFirestoreApi({FirebaseFirestore instance}) {
-    this._instance = instance ?? FirebaseFirestore.instance;
+    _instance = instance ?? FirebaseFirestore.instance;
   }
 
   Stream<List<QuestionModel>> getsByUserUnAnswered(UserModel user) {
-    final questionStream = this.gets(
+    final questionStream = gets(
         onlyActiveQuestions: true,
         dateTime: DateTime.now(),
         cityName: user.city);
@@ -40,7 +40,7 @@ class QuestionFirestoreApi extends BaseQuestionApi {
       final avaibleQuestions = <QuestionModel>[];
 
       if (questions.isNotEmpty) {
-        await Future.forEach(questions, (QuestionModel question) async {
+        await Future.forEach(questions, (question) async {
           final document = await _instance
               .collection(CollectionNames.collectionNameVotes)
               .where("userID", isEqualTo: user.id)
@@ -76,7 +76,7 @@ class QuestionFirestoreApi extends BaseQuestionApi {
   }) {
     final snapshots = _instance
         .collection(CollectionNames.collectionNameQuestions)
-        .onlyIsActive(onlyActiveQuestions)
+        .onlyIsActive()
         .dateTimeRange(dateTime)
         .cityNameFilter(cityName)
         .snapshots();
@@ -169,18 +169,17 @@ class QuestionFirestoreApi extends BaseQuestionApi {
 }
 
 extension QueryExtension on Query {
-  Query onlyIsActive(bool value) =>
-      value ? where("isActive", isEqualTo: value) : this;
+  Query onlyIsActive() => where("isActive", isEqualTo: true);
 
   Query dateTimeRange(DateTime dateTime) {
     return (dateTime != null)
-        ? this.where('endDate', isGreaterThan: dateTime.millisecondsSinceEpoch)
+        ? where('endDate', isGreaterThan: dateTime.millisecondsSinceEpoch)
         : this;
   }
 
   Query cityNameFilter(CityModel city) {
     return (city != null)
-        ? this.where('city.name', whereIn: [city.name, city.countryName])
+        ? where('city.name', whereIn: [city.name, city.countryName])
         : this;
   }
 }

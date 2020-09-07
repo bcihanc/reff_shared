@@ -1,3 +1,16 @@
+include: package:effective_dart/analysis_options.yaml
+
 analyzer:
-  enable-experiment:
-    - non-nullable
+  exclude:
+    - "build/**"
+    - '**/*g.dart'
+    - '**/*freezed.dart'
+
+#  enable-experiment:
+#    - non-nullable
+
+linter:
+  rules:
+    public_member_api_docs: false
+    prefer_relative_imports: false
+    file_names: false

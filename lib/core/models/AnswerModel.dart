@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'AnswerModel.freezed.dart';
-part 'AnswerModel.g.dart';
+part "AnswerModel.g.dart";
 
 @freezed
 abstract class AnswerModel with _$AnswerModel {
@@ -10,104 +10,105 @@ abstract class AnswerModel with _$AnswerModel {
       {@nullable String id,
       @required String content,
       @nullable String imageUrl,
-      @Default(MyColor.TRANSPARENT) MyColor color}) = _AnswerModel;
+      @Default(MyColor.transparent) MyColor color}) = _AnswerModel;
 
   factory AnswerModel.fromJson(Map<String, dynamic> json) =>
       _$AnswerModelFromJson(json);
 }
 
 enum MyColor {
-  AMBER,
-  BLACK,
-  BLUE,
-  BLUE_GREY,
-  BROWN,
-  CYAN,
-  DEEP_ORANGE,
-  DEEP_PURPLE,
-  GREEN,
-  GREY,
-  INDIGO,
-  LIGHT_BLUE,
-  LIGHT_GREEN,
-  LIME,
-  ORANGE,
-  PINK,
-  PURPLE,
-  RED,
-  TEAL,
-  TRANSPARENT,
-  WHITE,
-  YELLOW,
+  amber,
+  black,
+  blue,
+  blueGrey,
+  brown,
+  cyan,
+  deepOrange,
+  deepPurple,
+  green,
+  grey,
+  indigo,
+  lightBlue,
+  lightGreen,
+  lime,
+  orange,
+  pink,
+  purple,
+  red,
+  teal,
+  transparent,
+  white,
+  yellow,
 }
 
 extension MyColorExtension on MyColor {
   Color toColor() {
+    print("");
     switch (this) {
-      case MyColor.AMBER:
+      case MyColor.amber:
         return Colors.amber;
 
-      case MyColor.BLACK:
+      case MyColor.black:
         return Colors.black;
 
-      case MyColor.BLUE:
+      case MyColor.blue:
         return Colors.blue;
 
-      case MyColor.BLUE_GREY:
+      case MyColor.blueGrey:
         return Colors.blueGrey;
 
-      case MyColor.BROWN:
+      case MyColor.brown:
         return Colors.brown;
 
-      case MyColor.CYAN:
+      case MyColor.cyan:
         return Colors.cyan;
 
-      case MyColor.DEEP_ORANGE:
+      case MyColor.deepOrange:
         return Colors.deepOrange;
 
-      case MyColor.DEEP_PURPLE:
+      case MyColor.deepPurple:
         return Colors.deepPurple;
 
-      case MyColor.GREEN:
+      case MyColor.green:
         return Colors.green;
 
-      case MyColor.GREY:
+      case MyColor.grey:
         return Colors.grey;
 
-      case MyColor.INDIGO:
+      case MyColor.indigo:
         return Colors.indigo;
 
-      case MyColor.LIGHT_BLUE:
+      case MyColor.lightBlue:
         return Colors.lightBlue;
 
-      case MyColor.LIGHT_GREEN:
+      case MyColor.lightGreen:
         return Colors.lightGreen;
 
-      case MyColor.LIME:
+      case MyColor.lime:
         return Colors.lime;
 
-      case MyColor.ORANGE:
+      case MyColor.orange:
         return Colors.orange;
 
-      case MyColor.PINK:
+      case MyColor.pink:
         return Colors.pink;
 
-      case MyColor.PURPLE:
+      case MyColor.purple:
         return Colors.purple;
 
-      case MyColor.RED:
+      case MyColor.red:
         return Colors.red;
 
-      case MyColor.TEAL:
+      case MyColor.teal:
         return Colors.teal;
 
-      case MyColor.TRANSPARENT:
+      case MyColor.transparent:
         return Colors.transparent;
 
-      case MyColor.WHITE:
+      case MyColor.white:
         return Colors.white;
 
-      case MyColor.YELLOW:
+      case MyColor.yellow:
         return Colors.yellow;
 
       default:
@@ -116,51 +117,54 @@ extension MyColorExtension on MyColor {
   }
 }
 
-extension MaterialColorExtensions on Color {
+extension ColorExtensions on Color {
   MyColor myColor() {
-    if (this == Colors.amber)
-      return MyColor.AMBER;
-    else if (this == Colors.black)
-      return MyColor.BLACK;
-    else if (this == Colors.blue)
-      return MyColor.BLUE;
-    else if (this == Colors.blueGrey)
-      return MyColor.BLUE_GREY;
-    else if (this == Colors.brown)
-      return MyColor.BROWN;
-    else if (this == Colors.cyan)
-      return MyColor.CYAN;
-    else if (this == Colors.deepOrange)
-      return MyColor.DEEP_ORANGE;
-    else if (this == Colors.deepPurple)
-      return MyColor.DEEP_PURPLE;
-    else if (this == Colors.green)
-      return MyColor.GREEN;
-    else if (this == Colors.grey)
-      return MyColor.GREY;
-    else if (this == Colors.indigo)
-      return MyColor.INDIGO;
-    else if (this == Colors.lightBlue)
-      return MyColor.LIGHT_BLUE;
-    else if (this == Colors.lightGreen)
-      return MyColor.LIGHT_GREEN;
-    else if (this == Colors.lime)
-      return MyColor.LIME;
-    else if (this == Colors.orange)
-      return MyColor.ORANGE;
-    else if (this == Colors.pink)
-      return MyColor.PINK;
-    else if (this == Colors.purple)
-      return MyColor.PURPLE;
-    else if (this == Colors.teal)
-      return MyColor.TEAL;
-    else if (this == Colors.transparent)
-      return MyColor.TRANSPARENT;
-    else if (this == Colors.white)
-      return MyColor.WHITE;
-    else if (this == Colors.yellow)
-      return MyColor.YELLOW;
-    else
-      return MyColor.TRANSPARENT;
+    if (this == Colors.amber) {
+      return MyColor.amber;
+    } else if (this == Colors.black) {
+      return MyColor.black;
+    } else if (this == Colors.blue) {
+      return MyColor.blue;
+    } else if (this == Colors.blueGrey) {
+      return MyColor.blueGrey;
+    } else if (this == Colors.brown) {
+      return MyColor.brown;
+    } else if (this == Colors.cyan) {
+      return MyColor.cyan;
+    } else if (this == Colors.deepOrange) {
+      return MyColor.deepOrange;
+    } else if (this == Colors.deepPurple) {
+      return MyColor.deepPurple;
+    } else if (this == Colors.green) {
+      return MyColor.green;
+    } else if (this == Colors.grey) {
+      return MyColor.grey;
+    } else if (this == Colors.indigo) {
+      return MyColor.indigo;
+    } else if (this == Colors.lightBlue) {
+      return MyColor.lightBlue;
+    } else if (this == Colors.lightGreen) {
+      return MyColor.lightGreen;
+    } else if (this == Colors.lime) {
+      return MyColor.lime;
+    } else if (this == Colors.orange) {
+      return MyColor.orange;
+    } else if (this == Colors.pink) {
+      return MyColor.pink;
+    } else if (this == Colors.purple) {
+      return MyColor.purple;
+    } else if (this == Colors.red) {
+      return MyColor.red;
+    } else if (this == Colors.teal) {
+      return MyColor.teal;
+    } else if (this == Colors.transparent) {
+      return MyColor.transparent;
+    } else if (this == Colors.white) {
+      return MyColor.white;
+    } else if (this == Colors.yellow) {
+      return MyColor.yellow;
+    } else {
+      return MyColor.transparent;
+    }
   }
 }

@@ -17,7 +17,7 @@ class AnswerFirestoreApi implements BaseAnswerApi {
 
   FirebaseFirestore _instance;
   AnswerFirestoreApi({FirebaseFirestore instance}) {
-    this._instance = instance ?? FirebaseFirestore.instance;
+    _instance = instance ?? FirebaseFirestore.instance;
   }
 
   Future<void> update(String id, AnswerModel answer) async {
@@ -42,8 +42,9 @@ class AnswerFirestoreApi implements BaseAnswerApi {
       final answersIDs = question.answers;
       final answers = await gets(answersIDs);
       return answers;
-    } else
+    } else {
       return null;
+    }
   }
 
   Future<List<AnswerModel>> gets(List<String> ids) async {
@@ -67,8 +68,9 @@ class AnswerFirestoreApi implements BaseAnswerApi {
 
     if (snapshot.exists) {
       return AnswerModel.fromJson(snapshot.data());
-    } else
+    } else {
       return null;
+    }
   }
 
   Future<List<String>> adds(List<AnswerModel> answers) async {

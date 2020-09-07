@@ -64,7 +64,7 @@ T _$enumDecodeNullable<T>(
 }
 
 const _$GenderEnumMap = {
-  Gender.MALE: 'MALE',
-  Gender.FEMALE: 'FEMALE',
-  Gender.OTHERS: 'OTHERS',
+  Gender.male: 'male',
+  Gender.female: 'female',
+  Gender.others: 'others',
 };

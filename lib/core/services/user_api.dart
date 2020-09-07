@@ -7,7 +7,7 @@ import 'package:reff_shared/core/utils/log_messages.dart';
 abstract class BaseUserApi {
   Future<UserModel> get(String id);
   Future<String> createUser(UserModel user);
-  isVotedThisQuestion(String userID, String questionID);
+  Future<bool> isVotedThisQuestion(String userID, String questionID);
 }
 
 class UserFirebaseApi implements BaseUserApi {
@@ -16,7 +16,7 @@ class UserFirebaseApi implements BaseUserApi {
   FirebaseFirestore _instance;
 
   UserFirebaseApi({FirebaseFirestore instance}) {
-    this._instance = instance ?? FirebaseFirestore.instance;
+    _instance = instance ?? FirebaseFirestore.instance;
   }
 
   /// return user's [documentID]
@@ -71,22 +71,4 @@ class UserFirebaseApi implements BaseUserApi {
 
     return isVoted;
   }
-
-//  Stream<bool> isVotedThisQuestionStream(String userID, String questionID) {
-//    final query = _instance
-//        .collection(CollectionNames.collectionNameVotes)
-//        .where("userID", isEqualTo: userID)
-//        .where("questionID", isEqualTo: questionID)
-//        .snapshots();
-//
-//    return query.map((votes) {
-//      final isVoted = (votes.docs != null) && votes.docs.isNotEmpty;
-//
-//      isVoted
-//          ? _logger.info(LogMessages.votedThisQuestion)
-//          : _logger.info(LogMessages.notVotedThisQuestion);
-//
-//      return isVoted;
-//    });
-//  }
 }

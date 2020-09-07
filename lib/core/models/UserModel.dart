@@ -23,7 +23,7 @@ abstract class UserModel with _$UserModel {
   int get calculatedAge =>
       DateTime.now().year -
       DateTime.fromMillisecondsSinceEpoch(createdDate).year +
-      this.age;
+      age;
 }
 
-enum Gender { MALE, FEMALE, OTHERS }
+enum Gender { male, female, others }
