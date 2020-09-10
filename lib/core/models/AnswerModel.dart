@@ -10,105 +10,104 @@ abstract class AnswerModel with _$AnswerModel {
       {@nullable String id,
       @required String content,
       @nullable String imageUrl,
-      @Default(MyColor.transparent) MyColor color}) = _AnswerModel;
+      @Default(MyColor.TRANSPARENT) MyColor color}) = _AnswerModel;
 
   factory AnswerModel.fromJson(Map<String, dynamic> json) =>
       _$AnswerModelFromJson(json);
 }
 
 enum MyColor {
-  amber,
-  black,
-  blue,
-  blueGrey,
-  brown,
-  cyan,
-  deepOrange,
-  deepPurple,
-  green,
-  grey,
-  indigo,
-  lightBlue,
-  lightGreen,
-  lime,
-  orange,
-  pink,
-  purple,
-  red,
-  teal,
-  transparent,
-  white,
-  yellow,
+  AMBER,
+  BLACK,
+  BLUE,
+  BLUE_GREY,
+  BROWN,
+  CYAN,
+  DEEP_ORANGE,
+  DEEP_PURPLE,
+  GREEN,
+  GREY,
+  INDIGO,
+  LIGHT_BLUE,
+  LIGHT_GREEN,
+  LIME,
+  ORANGE,
+  PINK,
+  PURPLE,
+  RED,
+  TEAL,
+  TRANSPARENT,
+  WHITE,
+  YELLOW,
 }
 
 extension MyColorExtension on MyColor {
   Color toColor() {
-    print("");
     switch (this) {
-      case MyColor.amber:
+      case MyColor.AMBER:
         return Colors.amber;
 
-      case MyColor.black:
+      case MyColor.BLACK:
         return Colors.black;
 
-      case MyColor.blue:
+      case MyColor.BLUE:
         return Colors.blue;
 
-      case MyColor.blueGrey:
+      case MyColor.BLUE_GREY:
         return Colors.blueGrey;
 
-      case MyColor.brown:
+      case MyColor.BROWN:
         return Colors.brown;
 
-      case MyColor.cyan:
+      case MyColor.CYAN:
         return Colors.cyan;
 
-      case MyColor.deepOrange:
+      case MyColor.DEEP_ORANGE:
         return Colors.deepOrange;
 
-      case MyColor.deepPurple:
+      case MyColor.DEEP_PURPLE:
         return Colors.deepPurple;
 
-      case MyColor.green:
+      case MyColor.GREEN:
         return Colors.green;
 
-      case MyColor.grey:
+      case MyColor.GREY:
         return Colors.grey;
 
-      case MyColor.indigo:
+      case MyColor.INDIGO:
         return Colors.indigo;
 
-      case MyColor.lightBlue:
+      case MyColor.LIGHT_BLUE:
         return Colors.lightBlue;
 
-      case MyColor.lightGreen:
+      case MyColor.LIGHT_GREEN:
         return Colors.lightGreen;
 
-      case MyColor.lime:
+      case MyColor.LIME:
         return Colors.lime;
 
-      case MyColor.orange:
+      case MyColor.ORANGE:
         return Colors.orange;
 
-      case MyColor.pink:
+      case MyColor.PINK:
         return Colors.pink;
 
-      case MyColor.purple:
+      case MyColor.PURPLE:
         return Colors.purple;
 
-      case MyColor.red:
+      case MyColor.RED:
         return Colors.red;
 
-      case MyColor.teal:
+      case MyColor.TEAL:
         return Colors.teal;
 
-      case MyColor.transparent:
+      case MyColor.TRANSPARENT:
         return Colors.transparent;
 
-      case MyColor.white:
+      case MyColor.WHITE:
         return Colors.white;
 
-      case MyColor.yellow:
+      case MyColor.YELLOW:
         return Colors.yellow;
 
       default:
@@ -120,51 +119,51 @@ extension MyColorExtension on MyColor {
 extension ColorExtensions on Color {
   MyColor myColor() {
     if (this == Colors.amber) {
-      return MyColor.amber;
+      return MyColor.AMBER;
     } else if (this == Colors.black) {
-      return MyColor.black;
+      return MyColor.BLACK;
     } else if (this == Colors.blue) {
-      return MyColor.blue;
+      return MyColor.BLUE;
     } else if (this == Colors.blueGrey) {
-      return MyColor.blueGrey;
+      return MyColor.BLUE_GREY;
     } else if (this == Colors.brown) {
-      return MyColor.brown;
+      return MyColor.BROWN;
     } else if (this == Colors.cyan) {
-      return MyColor.cyan;
+      return MyColor.CYAN;
     } else if (this == Colors.deepOrange) {
-      return MyColor.deepOrange;
+      return MyColor.DEEP_ORANGE;
     } else if (this == Colors.deepPurple) {
-      return MyColor.deepPurple;
+      return MyColor.DEEP_PURPLE;
     } else if (this == Colors.green) {
-      return MyColor.green;
+      return MyColor.GREEN;
     } else if (this == Colors.grey) {
-      return MyColor.grey;
+      return MyColor.GREY;
     } else if (this == Colors.indigo) {
-      return MyColor.indigo;
+      return MyColor.INDIGO;
     } else if (this == Colors.lightBlue) {
-      return MyColor.lightBlue;
+      return MyColor.LIGHT_BLUE;
     } else if (this == Colors.lightGreen) {
-      return MyColor.lightGreen;
+      return MyColor.LIGHT_GREEN;
     } else if (this == Colors.lime) {
-      return MyColor.lime;
+      return MyColor.LIGHT_BLUE;
     } else if (this == Colors.orange) {
-      return MyColor.orange;
+      return MyColor.ORANGE;
     } else if (this == Colors.pink) {
-      return MyColor.pink;
+      return MyColor.PINK;
     } else if (this == Colors.purple) {
-      return MyColor.purple;
+      return MyColor.PURPLE;
     } else if (this == Colors.red) {
-      return MyColor.red;
+      return MyColor.RED;
     } else if (this == Colors.teal) {
-      return MyColor.teal;
+      return MyColor.TEAL;
     } else if (this == Colors.transparent) {
-      return MyColor.transparent;
+      return MyColor.TRANSPARENT;
     } else if (this == Colors.white) {
-      return MyColor.white;
+      return MyColor.WHITE;
     } else if (this == Colors.yellow) {
-      return MyColor.yellow;
+      return MyColor.YELLOW;
     } else {
-      return MyColor.transparent;
+      return MyColor.TRANSPARENT;
     }
   }
 }

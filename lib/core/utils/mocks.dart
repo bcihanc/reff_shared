@@ -30,7 +30,8 @@ mixin Mocks {
         id: "1",
         point: 10,
         age: 27,
-        gender: Gender.others,
+        gender: Gender.OTHERS,
+        education: Education.BACHELOR,
         city: CityModel(
             countryCode: "tr",
             langCode: "tr",
@@ -42,7 +43,8 @@ mixin Mocks {
         id: "2",
         point: 10,
         age: 27,
-        gender: Gender.male,
+        gender: Gender.MALE,
+        education: Education.BACHELOR,
         city: CityModel(
             countryCode: "tr",
             langCode: "tr",
@@ -165,7 +167,8 @@ mixin Mocks {
       answerID: "1",
       city: CityModel.cities.first,
       age: 18,
-      gender: Gender.male,
+      gender: Gender.MALE,
+      education: Education.BACHELOR,
       createdDate: _initialDay.millisecondsSinceEpoch,
     ),
     VoteModel(
@@ -175,8 +178,9 @@ mixin Mocks {
       answerID: "2",
       city: CityModel.cities.first,
       age: 18,
-      gender: Gender.male,
+      gender: Gender.MALE,
       createdDate: _initialDay.millisecondsSinceEpoch,
+      education: Education.BACHELOR,
     ),
     VoteModel(
       id: "3",
@@ -185,7 +189,8 @@ mixin Mocks {
       answerID: "3",
       city: CityModel.cities.first,
       age: 18,
-      gender: Gender.male,
+      gender: Gender.MALE,
+      education: Education.BACHELOR,
       createdDate: _initialDay.millisecondsSinceEpoch,
     ),
   ];
@@ -217,22 +222,22 @@ mixin Mocks {
         id: "1",
         content: "content",
         imageUrl: "imageUrl",
-        color: MyColor.amber),
+        color: MyColor.AMBER),
     AnswerModel(
         id: "2",
         content: "content",
         imageUrl: "imageUrl",
-        color: MyColor.amber),
+        color: MyColor.AMBER),
     AnswerModel(
         id: "3",
         content: "content",
         imageUrl: "imageUrl",
-        color: MyColor.amber),
+        color: MyColor.AMBER),
     AnswerModel(
         id: "4",
         content: "content",
         imageUrl: "imageUrl",
-        color: MyColor.amber),
+        color: MyColor.AMBER),
   ];
   static final answersJson = [
     {"id": "1", "content": "content", "imageUrl": "imageUrl", "color": "AMBER"},

@@ -9,14 +9,14 @@ part of 'VoteModel.dart';
 
 T _$identity<T>(T value) => value;
 VoteModel _$VoteModelFromJson(Map<String, dynamic> json) {
-  return _AnswerModel.fromJson(json);
+  return _VoteModel.fromJson(json);
 }
 
 class _$VoteModelTearOff {
   const _$VoteModelTearOff();
 
 // ignore: unused_element
-  _AnswerModel call(
+  _VoteModel call(
       {@nullable String id,
       @required String userID,
       @required int age,
@@ -24,8 +24,9 @@ class _$VoteModelTearOff {
       @required CityModel city,
       @required String questionID,
       @required String answerID,
-      @required int createdDate}) {
-    return _AnswerModel(
+      @required int createdDate,
+      @required Education education}) {
+    return _VoteModel(
       id: id,
       userID: userID,
       age: age,
@@ -34,6 +35,7 @@ class _$VoteModelTearOff {
       questionID: questionID,
       answerID: answerID,
       createdDate: createdDate,
+      education: education,
     );
   }
 }
@@ -51,6 +53,7 @@ mixin _$VoteModel {
   String get questionID;
   String get answerID;
   int get createdDate;
+  Education get education;
 
   Map<String, dynamic> toJson();
   $VoteModelCopyWith<VoteModel> get copyWith;
@@ -67,7 +70,8 @@ abstract class $VoteModelCopyWith<$Res> {
       CityModel city,
       String questionID,
       String answerID,
-      int createdDate});
+      int createdDate,
+      Education education});
 
   $CityModelCopyWith<$Res> get city;
 }
@@ -89,6 +93,7 @@ class _$VoteModelCopyWithImpl<$Res> implements $VoteModelCopyWith<$Res> {
     Object questionID = freezed,
     Object answerID = freezed,
     Object createdDate = freezed,
+    Object education = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
@@ -101,6 +106,8 @@ class _$VoteModelCopyWithImpl<$Res> implements $VoteModelCopyWith<$Res> {
       answerID: answerID == freezed ? _value.answerID : answerID as String,
       createdDate:
           createdDate == freezed ? _value.createdDate : createdDate as int,
+      education:
+          education == freezed ? _value.education : education as Education,
     ));
   }
 
@@ -115,10 +122,10 @@ class _$VoteModelCopyWithImpl<$Res> implements $VoteModelCopyWith<$Res> {
   }
 }
 
-abstract class _$AnswerModelCopyWith<$Res> implements $VoteModelCopyWith<$Res> {
-  factory _$AnswerModelCopyWith(
-          _AnswerModel value, $Res Function(_AnswerModel) then) =
-      __$AnswerModelCopyWithImpl<$Res>;
+abstract class _$VoteModelCopyWith<$Res> implements $VoteModelCopyWith<$Res> {
+  factory _$VoteModelCopyWith(
+          _VoteModel value, $Res Function(_VoteModel) then) =
+      __$VoteModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {@nullable String id,
@@ -128,20 +135,20 @@ abstract class _$AnswerModelCopyWith<$Res> implements $VoteModelCopyWith<$Res> {
       CityModel city,
       String questionID,
       String answerID,
-      int createdDate});
+      int createdDate,
+      Education education});
 
   @override
   $CityModelCopyWith<$Res> get city;
 }
 
-class __$AnswerModelCopyWithImpl<$Res> extends _$VoteModelCopyWithImpl<$Res>
-    implements _$AnswerModelCopyWith<$Res> {
-  __$AnswerModelCopyWithImpl(
-      _AnswerModel _value, $Res Function(_AnswerModel) _then)
-      : super(_value, (v) => _then(v as _AnswerModel));
+class __$VoteModelCopyWithImpl<$Res> extends _$VoteModelCopyWithImpl<$Res>
+    implements _$VoteModelCopyWith<$Res> {
+  __$VoteModelCopyWithImpl(_VoteModel _value, $Res Function(_VoteModel) _then)
+      : super(_value, (v) => _then(v as _VoteModel));
 
   @override
-  _AnswerModel get _value => super._value as _AnswerModel;
+  _VoteModel get _value => super._value as _VoteModel;
 
   @override
   $Res call({
@@ -153,8 +160,9 @@ class __$AnswerModelCopyWithImpl<$Res> extends _$VoteModelCopyWithImpl<$Res>
     Object questionID = freezed,
     Object answerID = freezed,
     Object createdDate = freezed,
+    Object education = freezed,
   }) {
-    return _then(_AnswerModel(
+    return _then(_VoteModel(
       id: id == freezed ? _value.id : id as String,
       userID: userID == freezed ? _value.userID : userID as String,
       age: age == freezed ? _value.age : age as int,
@@ -165,13 +173,15 @@ class __$AnswerModelCopyWithImpl<$Res> extends _$VoteModelCopyWithImpl<$Res>
       answerID: answerID == freezed ? _value.answerID : answerID as String,
       createdDate:
           createdDate == freezed ? _value.createdDate : createdDate as int,
+      education:
+          education == freezed ? _value.education : education as Education,
     ));
   }
 }
 
 @JsonSerializable()
-class _$_AnswerModel implements _AnswerModel {
-  const _$_AnswerModel(
+class _$_VoteModel implements _VoteModel {
+  const _$_VoteModel(
       {@nullable this.id,
       @required this.userID,
       @required this.age,
@@ -179,17 +189,19 @@ class _$_AnswerModel implements _AnswerModel {
       @required this.city,
       @required this.questionID,
       @required this.answerID,
-      @required this.createdDate})
+      @required this.createdDate,
+      @required this.education})
       : assert(userID != null),
         assert(age != null),
         assert(gender != null),
         assert(city != null),
         assert(questionID != null),
         assert(answerID != null),
-        assert(createdDate != null);
+        assert(createdDate != null),
+        assert(education != null);
 
-  factory _$_AnswerModel.fromJson(Map<String, dynamic> json) =>
-      _$_$_AnswerModelFromJson(json);
+  factory _$_VoteModel.fromJson(Map<String, dynamic> json) =>
+      _$_$_VoteModelFromJson(json);
 
   @override
   @nullable
@@ -208,16 +220,18 @@ class _$_AnswerModel implements _AnswerModel {
   final String answerID;
   @override
   final int createdDate;
+  @override
+  final Education education;
 
   @override
   String toString() {
-    return 'VoteModel(id: $id, userID: $userID, age: $age, gender: $gender, city: $city, questionID: $questionID, answerID: $answerID, createdDate: $createdDate)';
+    return 'VoteModel(id: $id, userID: $userID, age: $age, gender: $gender, city: $city, questionID: $questionID, answerID: $answerID, createdDate: $createdDate, education: $education)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AnswerModel &&
+        (other is _VoteModel &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.userID, userID) ||
@@ -236,7 +250,10 @@ class _$_AnswerModel implements _AnswerModel {
                     .equals(other.answerID, answerID)) &&
             (identical(other.createdDate, createdDate) ||
                 const DeepCollectionEquality()
-                    .equals(other.createdDate, createdDate)));
+                    .equals(other.createdDate, createdDate)) &&
+            (identical(other.education, education) ||
+                const DeepCollectionEquality()
+                    .equals(other.education, education)));
   }
 
   @override
@@ -249,20 +266,21 @@ class _$_AnswerModel implements _AnswerModel {
       const DeepCollectionEquality().hash(city) ^
       const DeepCollectionEquality().hash(questionID) ^
       const DeepCollectionEquality().hash(answerID) ^
-      const DeepCollectionEquality().hash(createdDate);
+      const DeepCollectionEquality().hash(createdDate) ^
+      const DeepCollectionEquality().hash(education);
 
   @override
-  _$AnswerModelCopyWith<_AnswerModel> get copyWith =>
-      __$AnswerModelCopyWithImpl<_AnswerModel>(this, _$identity);
+  _$VoteModelCopyWith<_VoteModel> get copyWith =>
+      __$VoteModelCopyWithImpl<_VoteModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_AnswerModelToJson(this);
+    return _$_$_VoteModelToJson(this);
   }
 }
 
-abstract class _AnswerModel implements VoteModel {
-  const factory _AnswerModel(
+abstract class _VoteModel implements VoteModel {
+  const factory _VoteModel(
       {@nullable String id,
       @required String userID,
       @required int age,
@@ -270,10 +288,11 @@ abstract class _AnswerModel implements VoteModel {
       @required CityModel city,
       @required String questionID,
       @required String answerID,
-      @required int createdDate}) = _$_AnswerModel;
+      @required int createdDate,
+      @required Education education}) = _$_VoteModel;
 
-  factory _AnswerModel.fromJson(Map<String, dynamic> json) =
-      _$_AnswerModel.fromJson;
+  factory _VoteModel.fromJson(Map<String, dynamic> json) =
+      _$_VoteModel.fromJson;
 
   @override
   @nullable
@@ -293,5 +312,7 @@ abstract class _AnswerModel implements VoteModel {
   @override
   int get createdDate;
   @override
-  _$AnswerModelCopyWith<_AnswerModel> get copyWith;
+  Education get education;
+  @override
+  _$VoteModelCopyWith<_VoteModel> get copyWith;
 }

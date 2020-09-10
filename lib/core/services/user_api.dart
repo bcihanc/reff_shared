@@ -8,6 +8,7 @@ abstract class BaseUserApi {
   Future<UserModel> get(String id);
   Future<String> createUser(UserModel user);
   Future<bool> isVotedThisQuestion(String userID, String questionID);
+  Future<void> remove(String userID);
 }
 
 class UserFirebaseApi implements BaseUserApi {
@@ -70,5 +71,30 @@ class UserFirebaseApi implements BaseUserApi {
         : _logger.info(LogMessages.notVotedThisQuestion);
 
     return isVoted;
+  }
+
+  @override
+  Future<void> remove(String userID) async {
+    // ilk önce kullanıcının yanıtlarını silelim
+    final votes = await _instance
+        .collection(CollectionNames.collectionNameVotes)
+        .where("userID", isEqualTo: userID)
+        .get();
+    if (votes.size > 0) {
+      for (final vote in votes.docs) {
+        if (vote.exists) {
+          await vote.reference.delete();
+        }
+      }
+
+      await Future.forEach<QueryDocumentSnapshot>(
+          votes.docs, (vote) async => await vote.reference.delete());
+    }
+
+    // son olarak kullanıcıyı kaldırıyoruz
+    await _instance
+        .collection(CollectionNames.collectionNameUsers)
+        .doc(userID)
+        .delete();
   }
 }

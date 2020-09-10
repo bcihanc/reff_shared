@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:logging/logging.dart';
 import 'package:reff_shared/core/services/services.dart';
 import 'package:reff_shared/core/utils/constants.dart';
 import 'package:reff_shared/core/models/models.dart';
@@ -12,7 +13,7 @@ abstract class BaseResultApi {
 }
 
 class ResultFirestoreApi implements BaseResultApi {
-  // final _logger = Logger("ResultFirestoreApi");
+  final _logger = Logger("ResultFirestoreApi");
 
   FirebaseFirestore _instance;
 
@@ -49,13 +50,15 @@ class ResultFirestoreApi implements BaseResultApi {
     final agesMap = ResultModelHelper.createAgeMap(withVotes);
     final gendersMap = ResultModelHelper.createGenderMap(withVotes);
     final citiesNameMap = ResultModelHelper.createCityNameMap(withVotes);
+    final educationMap = ResultModelHelper.createEducationMap(withVotes);
 
     final result = ResultModel(
         questionID: questionID,
         answers: withVotes.keys.toList(),
         agesMap: agesMap,
         gendersMap: gendersMap,
-        cityNameMap: citiesNameMap);
+        cityNameMap: citiesNameMap,
+        educationMap: educationMap);
 
     return await create(result);
   }
@@ -82,5 +85,16 @@ class ResultFirestoreApi implements BaseResultApi {
         .collection(CollectionNames.collectionNameResults)
         .doc(resultID)
         .delete();
+
+    final doc = await _instance
+        .collection(CollectionNames.collectionNameResults)
+        .doc(resultID)
+        .get();
+
+    final result = doc.exists;
+
+    result
+        ? _logger.info("$resultID kaldırıldı")
+        : _logger.info("$resultID kaldırılamadı‍");
   }
 }

@@ -33,6 +33,14 @@ _$_ResultModel _$_$_ResultModelFromJson(Map json) {
             (k, e) => MapEntry(k as String, e as int),
           )),
     ),
+    educationMap: (json['educationMap'] as Map)?.map(
+      (k, e) => MapEntry(
+          k as String,
+          (e as Map)?.map(
+            (k, e) =>
+                MapEntry(_$enumDecodeNullable(_$EducationEnumMap, k), e as int),
+          )),
+    ),
   );
 }
 
@@ -46,6 +54,8 @@ Map<String, dynamic> _$_$_ResultModelToJson(_$_ResultModel instance) =>
       'gendersMap': instance.gendersMap?.map((k, e) =>
           MapEntry(k, e?.map((k, e) => MapEntry(_$GenderEnumMap[k], e)))),
       'cityNameMap': instance.cityNameMap,
+      'educationMap': instance.educationMap?.map((k, e) =>
+          MapEntry(k, e?.map((k, e) => MapEntry(_$EducationEnumMap[k], e)))),
     };
 
 T _$enumDecode<T>(
@@ -81,7 +91,14 @@ T _$enumDecodeNullable<T>(
 }
 
 const _$GenderEnumMap = {
-  Gender.male: 'male',
-  Gender.female: 'female',
-  Gender.others: 'others',
+  Gender.MALE: 'MALE',
+  Gender.FEMALE: 'FEMALE',
+  Gender.OTHERS: 'OTHERS',
+};
+
+const _$EducationEnumMap = {
+  Education.PRIMARY_EDUCATION: 'PRIMARY_EDUCATION',
+  Education.HIGH_SCHOOL: 'HIGH_SCHOOL',
+  Education.BACHELOR: 'BACHELOR',
+  Education.MASTER: 'MASTER',
 };

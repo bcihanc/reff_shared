@@ -14,6 +14,7 @@ abstract class UserModel with _$UserModel {
     @required Gender gender,
     @required CityModel city,
     @required int createdDate,
+    @required Education education,
     @Default(0) int point,
   }) = _UserModel;
 
@@ -26,4 +27,5 @@ abstract class UserModel with _$UserModel {
       age;
 }
 
-enum Gender { male, female, others }
+enum Gender { MALE, FEMALE, OTHERS }
+enum Education { PRIMARY_EDUCATION, HIGH_SCHOOL, BACHELOR, MASTER }

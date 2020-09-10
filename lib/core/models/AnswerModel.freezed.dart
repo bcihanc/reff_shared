@@ -20,7 +20,7 @@ class _$AnswerModelTearOff {
       {@nullable String id,
       @required String content,
       @nullable String imageUrl,
-      MyColor color = MyColor.transparent}) {
+      MyColor color = MyColor.TRANSPARENT}) {
     return _AnswerModel(
       id: id,
       content: content,
@@ -123,7 +123,7 @@ class _$_AnswerModel implements _AnswerModel {
       {@nullable this.id,
       @required this.content,
       @nullable this.imageUrl,
-      this.color = MyColor.transparent})
+      this.color = MyColor.TRANSPARENT})
       : assert(content != null),
         assert(color != null);
 
@@ -138,7 +138,7 @@ class _$_AnswerModel implements _AnswerModel {
   @override
   @nullable
   final String imageUrl;
-  @JsonKey(defaultValue: MyColor.transparent)
+  @JsonKey(defaultValue: MyColor.TRANSPARENT)
   @override
   final MyColor color;
 

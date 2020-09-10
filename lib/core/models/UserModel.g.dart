@@ -17,6 +17,7 @@ _$_UserModel _$_$_UserModelFromJson(Map json) {
             (k, e) => MapEntry(k as String, e),
           )),
     createdDate: json['createdDate'] as int,
+    education: _$enumDecodeNullable(_$EducationEnumMap, json['education']),
     point: json['point'] as int ?? 0,
   );
 }
@@ -28,6 +29,7 @@ Map<String, dynamic> _$_$_UserModelToJson(_$_UserModel instance) =>
       'gender': _$GenderEnumMap[instance.gender],
       'city': instance.city?.toJson(),
       'createdDate': instance.createdDate,
+      'education': _$EducationEnumMap[instance.education],
       'point': instance.point,
     };
 
@@ -64,7 +66,14 @@ T _$enumDecodeNullable<T>(
 }
 
 const _$GenderEnumMap = {
-  Gender.male: 'male',
-  Gender.female: 'female',
-  Gender.others: 'others',
+  Gender.MALE: 'MALE',
+  Gender.FEMALE: 'FEMALE',
+  Gender.OTHERS: 'OTHERS',
+};
+
+const _$EducationEnumMap = {
+  Education.PRIMARY_EDUCATION: 'PRIMARY_EDUCATION',
+  Education.HIGH_SCHOOL: 'HIGH_SCHOOL',
+  Education.BACHELOR: 'BACHELOR',
+  Education.MASTER: 'MASTER',
 };

@@ -7,13 +7,15 @@ part 'ResultModel.g.dart';
 
 @freezed
 abstract class ResultModel with _$ResultModel {
-  const factory ResultModel(
-      {@nullable String id,
-      @required String questionID,
-      @required List<String> answers,
-      @required Map<String, Map<int, int>> agesMap,
-      @required Map<String, Map<Gender, int>> gendersMap,
-      @required Map<String, Map<String, int>> cityNameMap}) = _ResultModel;
+  const factory ResultModel({
+    @nullable String id,
+    @required String questionID,
+    @required List<String> answers,
+    @required Map<String, Map<int, int>> agesMap,
+    @required Map<String, Map<Gender, int>> gendersMap,
+    @required Map<String, Map<String, int>> cityNameMap,
+    @required Map<String, Map<Education, int>> educationMap,
+  }) = _ResultModel;
 
   factory ResultModel.fromJson(Map<String, dynamic> json) =>
       _$ResultModelFromJson(json);
@@ -69,6 +71,23 @@ class ResultModelHelper {
           cityMap.map((key, value) => MapEntry(key.name, value));
       final sortedCityNameMap = _sortedMapByValue<String>(cityNameMap);
       return MapEntry(answerID, sortedCityNameMap);
+    });
+  }
+
+  static Map<String, Map<Education, int>> createEducationMap(
+      Map<String, List<VoteModel>> answersWithVotes) {
+    return answersWithVotes.map((answerID, votes) {
+      final educationMap = Map<Education, int>.fromIterable(Education.values,
+          key: (education) => education, value: (_) => 0);
+
+      for (final vote in votes) {
+        educationMap.update(vote.education, (value) => value + 1);
+      }
+
+      educationMap.removeWhere((key, value) => value == 0);
+
+      final sortedMap = _sortedMapByValue<Education>(educationMap);
+      return MapEntry(answerID, sortedMap);
     });
   }
 }

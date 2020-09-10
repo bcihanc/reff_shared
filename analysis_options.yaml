@@ -14,3 +14,4 @@ linter:
     public_member_api_docs: false
     prefer_relative_imports: false
     file_names: false
+    constant_identifier_names: false

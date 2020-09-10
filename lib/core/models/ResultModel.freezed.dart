@@ -22,7 +22,8 @@ class _$ResultModelTearOff {
       @required List<String> answers,
       @required Map<String, Map<int, int>> agesMap,
       @required Map<String, Map<Gender, int>> gendersMap,
-      @required Map<String, Map<String, int>> cityNameMap}) {
+      @required Map<String, Map<String, int>> cityNameMap,
+      @required Map<String, Map<Education, int>> educationMap}) {
     return _ResultModel(
       id: id,
       questionID: questionID,
@@ -30,6 +31,7 @@ class _$ResultModelTearOff {
       agesMap: agesMap,
       gendersMap: gendersMap,
       cityNameMap: cityNameMap,
+      educationMap: educationMap,
     );
   }
 }
@@ -45,6 +47,7 @@ mixin _$ResultModel {
   Map<String, Map<int, int>> get agesMap;
   Map<String, Map<Gender, int>> get gendersMap;
   Map<String, Map<String, int>> get cityNameMap;
+  Map<String, Map<Education, int>> get educationMap;
 
   Map<String, dynamic> toJson();
   $ResultModelCopyWith<ResultModel> get copyWith;
@@ -60,7 +63,8 @@ abstract class $ResultModelCopyWith<$Res> {
       List<String> answers,
       Map<String, Map<int, int>> agesMap,
       Map<String, Map<Gender, int>> gendersMap,
-      Map<String, Map<String, int>> cityNameMap});
+      Map<String, Map<String, int>> cityNameMap,
+      Map<String, Map<Education, int>> educationMap});
 }
 
 class _$ResultModelCopyWithImpl<$Res> implements $ResultModelCopyWith<$Res> {
@@ -78,6 +82,7 @@ class _$ResultModelCopyWithImpl<$Res> implements $ResultModelCopyWith<$Res> {
     Object agesMap = freezed,
     Object gendersMap = freezed,
     Object cityNameMap = freezed,
+    Object educationMap = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
@@ -93,6 +98,9 @@ class _$ResultModelCopyWithImpl<$Res> implements $ResultModelCopyWith<$Res> {
       cityNameMap: cityNameMap == freezed
           ? _value.cityNameMap
           : cityNameMap as Map<String, Map<String, int>>,
+      educationMap: educationMap == freezed
+          ? _value.educationMap
+          : educationMap as Map<String, Map<Education, int>>,
     ));
   }
 }
@@ -109,7 +117,8 @@ abstract class _$ResultModelCopyWith<$Res>
       List<String> answers,
       Map<String, Map<int, int>> agesMap,
       Map<String, Map<Gender, int>> gendersMap,
-      Map<String, Map<String, int>> cityNameMap});
+      Map<String, Map<String, int>> cityNameMap,
+      Map<String, Map<Education, int>> educationMap});
 }
 
 class __$ResultModelCopyWithImpl<$Res> extends _$ResultModelCopyWithImpl<$Res>
@@ -129,6 +138,7 @@ class __$ResultModelCopyWithImpl<$Res> extends _$ResultModelCopyWithImpl<$Res>
     Object agesMap = freezed,
     Object gendersMap = freezed,
     Object cityNameMap = freezed,
+    Object educationMap = freezed,
   }) {
     return _then(_ResultModel(
       id: id == freezed ? _value.id : id as String,
@@ -144,6 +154,9 @@ class __$ResultModelCopyWithImpl<$Res> extends _$ResultModelCopyWithImpl<$Res>
       cityNameMap: cityNameMap == freezed
           ? _value.cityNameMap
           : cityNameMap as Map<String, Map<String, int>>,
+      educationMap: educationMap == freezed
+          ? _value.educationMap
+          : educationMap as Map<String, Map<Education, int>>,
     ));
   }
 }
@@ -156,12 +169,14 @@ class _$_ResultModel with DiagnosticableTreeMixin implements _ResultModel {
       @required this.answers,
       @required this.agesMap,
       @required this.gendersMap,
-      @required this.cityNameMap})
+      @required this.cityNameMap,
+      @required this.educationMap})
       : assert(questionID != null),
         assert(answers != null),
         assert(agesMap != null),
         assert(gendersMap != null),
-        assert(cityNameMap != null);
+        assert(cityNameMap != null),
+        assert(educationMap != null);
 
   factory _$_ResultModel.fromJson(Map<String, dynamic> json) =>
       _$_$_ResultModelFromJson(json);
@@ -179,10 +194,12 @@ class _$_ResultModel with DiagnosticableTreeMixin implements _ResultModel {
   final Map<String, Map<Gender, int>> gendersMap;
   @override
   final Map<String, Map<String, int>> cityNameMap;
+  @override
+  final Map<String, Map<Education, int>> educationMap;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ResultModel(id: $id, questionID: $questionID, answers: $answers, agesMap: $agesMap, gendersMap: $gendersMap, cityNameMap: $cityNameMap)';
+    return 'ResultModel(id: $id, questionID: $questionID, answers: $answers, agesMap: $agesMap, gendersMap: $gendersMap, cityNameMap: $cityNameMap, educationMap: $educationMap)';
   }
 
   @override
@@ -195,7 +212,8 @@ class _$_ResultModel with DiagnosticableTreeMixin implements _ResultModel {
       ..add(DiagnosticsProperty('answers', answers))
       ..add(DiagnosticsProperty('agesMap', agesMap))
       ..add(DiagnosticsProperty('gendersMap', gendersMap))
-      ..add(DiagnosticsProperty('cityNameMap', cityNameMap));
+      ..add(DiagnosticsProperty('cityNameMap', cityNameMap))
+      ..add(DiagnosticsProperty('educationMap', educationMap));
   }
 
   @override
@@ -218,7 +236,10 @@ class _$_ResultModel with DiagnosticableTreeMixin implements _ResultModel {
                     .equals(other.gendersMap, gendersMap)) &&
             (identical(other.cityNameMap, cityNameMap) ||
                 const DeepCollectionEquality()
-                    .equals(other.cityNameMap, cityNameMap)));
+                    .equals(other.cityNameMap, cityNameMap)) &&
+            (identical(other.educationMap, educationMap) ||
+                const DeepCollectionEquality()
+                    .equals(other.educationMap, educationMap)));
   }
 
   @override
@@ -229,7 +250,8 @@ class _$_ResultModel with DiagnosticableTreeMixin implements _ResultModel {
       const DeepCollectionEquality().hash(answers) ^
       const DeepCollectionEquality().hash(agesMap) ^
       const DeepCollectionEquality().hash(gendersMap) ^
-      const DeepCollectionEquality().hash(cityNameMap);
+      const DeepCollectionEquality().hash(cityNameMap) ^
+      const DeepCollectionEquality().hash(educationMap);
 
   @override
   _$ResultModelCopyWith<_ResultModel> get copyWith =>
@@ -243,12 +265,14 @@ class _$_ResultModel with DiagnosticableTreeMixin implements _ResultModel {
 
 abstract class _ResultModel implements ResultModel {
   const factory _ResultModel(
-      {@nullable String id,
-      @required String questionID,
-      @required List<String> answers,
-      @required Map<String, Map<int, int>> agesMap,
-      @required Map<String, Map<Gender, int>> gendersMap,
-      @required Map<String, Map<String, int>> cityNameMap}) = _$_ResultModel;
+          {@nullable String id,
+          @required String questionID,
+          @required List<String> answers,
+          @required Map<String, Map<int, int>> agesMap,
+          @required Map<String, Map<Gender, int>> gendersMap,
+          @required Map<String, Map<String, int>> cityNameMap,
+          @required Map<String, Map<Education, int>> educationMap}) =
+      _$_ResultModel;
 
   factory _ResultModel.fromJson(Map<String, dynamic> json) =
       _$_ResultModel.fromJson;
@@ -266,6 +290,8 @@ abstract class _ResultModel implements ResultModel {
   Map<String, Map<Gender, int>> get gendersMap;
   @override
   Map<String, Map<String, int>> get cityNameMap;
+  @override
+  Map<String, Map<Education, int>> get educationMap;
   @override
   _$ResultModelCopyWith<_ResultModel> get copyWith;
 }

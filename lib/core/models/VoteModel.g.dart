@@ -6,8 +6,8 @@ part of 'VoteModel.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AnswerModel _$_$_AnswerModelFromJson(Map json) {
-  return _$_AnswerModel(
+_$_VoteModel _$_$_VoteModelFromJson(Map json) {
+  return _$_VoteModel(
     id: json['id'] as String,
     userID: json['userID'] as String,
     age: json['age'] as int,
@@ -20,10 +20,11 @@ _$_AnswerModel _$_$_AnswerModelFromJson(Map json) {
     questionID: json['questionID'] as String,
     answerID: json['answerID'] as String,
     createdDate: json['createdDate'] as int,
+    education: _$enumDecodeNullable(_$EducationEnumMap, json['education']),
   );
 }
 
-Map<String, dynamic> _$_$_AnswerModelToJson(_$_AnswerModel instance) =>
+Map<String, dynamic> _$_$_VoteModelToJson(_$_VoteModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'userID': instance.userID,
@@ -33,6 +34,7 @@ Map<String, dynamic> _$_$_AnswerModelToJson(_$_AnswerModel instance) =>
       'questionID': instance.questionID,
       'answerID': instance.answerID,
       'createdDate': instance.createdDate,
+      'education': _$EducationEnumMap[instance.education],
     };
 
 T _$enumDecode<T>(
@@ -68,7 +70,14 @@ T _$enumDecodeNullable<T>(
 }
 
 const _$GenderEnumMap = {
-  Gender.male: 'male',
-  Gender.female: 'female',
-  Gender.others: 'others',
+  Gender.MALE: 'MALE',
+  Gender.FEMALE: 'FEMALE',
+  Gender.OTHERS: 'OTHERS',
+};
+
+const _$EducationEnumMap = {
+  Education.PRIMARY_EDUCATION: 'PRIMARY_EDUCATION',
+  Education.HIGH_SCHOOL: 'HIGH_SCHOOL',
+  Education.BACHELOR: 'BACHELOR',
+  Education.MASTER: 'MASTER',
 };

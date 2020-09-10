@@ -7,7 +7,6 @@ class CollectionNames {
   static const collectionNameVotes = "votes";
   static const collectionNameResults = "results";
 }
-
 const myColors = <Color>[
   Colors.amber,
   Colors.black,

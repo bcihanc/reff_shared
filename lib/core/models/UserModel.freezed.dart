@@ -1,4 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore: lines_longer_than_80_chars
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'UserModel.dart';
@@ -22,6 +23,7 @@ class _$UserModelTearOff {
       @required Gender gender,
       @required CityModel city,
       @required int createdDate,
+      @required Education education,
       int point = 0}) {
     return _UserModel(
       id: id,
@@ -29,6 +31,7 @@ class _$UserModelTearOff {
       gender: gender,
       city: city,
       createdDate: createdDate,
+      education: education,
       point: point,
     );
   }
@@ -44,6 +47,7 @@ mixin _$UserModel {
   Gender get gender;
   CityModel get city;
   int get createdDate;
+  Education get education;
   int get point;
 
   Map<String, dynamic> toJson();
@@ -59,6 +63,7 @@ abstract class $UserModelCopyWith<$Res> {
       Gender gender,
       CityModel city,
       int createdDate,
+      Education education,
       int point});
 
   $CityModelCopyWith<$Res> get city;
@@ -78,6 +83,7 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object gender = freezed,
     Object city = freezed,
     Object createdDate = freezed,
+    Object education = freezed,
     Object point = freezed,
   }) {
     return _then(_value.copyWith(
@@ -87,6 +93,8 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
       city: city == freezed ? _value.city : city as CityModel,
       createdDate:
           createdDate == freezed ? _value.createdDate : createdDate as int,
+      education:
+          education == freezed ? _value.education : education as Education,
       point: point == freezed ? _value.point : point as int,
     ));
   }
@@ -113,6 +121,7 @@ abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       Gender gender,
       CityModel city,
       int createdDate,
+      Education education,
       int point});
 
   @override
@@ -134,6 +143,7 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object gender = freezed,
     Object city = freezed,
     Object createdDate = freezed,
+    Object education = freezed,
     Object point = freezed,
   }) {
     return _then(_UserModel(
@@ -143,6 +153,8 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
       city: city == freezed ? _value.city : city as CityModel,
       createdDate:
           createdDate == freezed ? _value.createdDate : createdDate as int,
+      education:
+          education == freezed ? _value.education : education as Education,
       point: point == freezed ? _value.point : point as int,
     ));
   }
@@ -156,11 +168,13 @@ class _$_UserModel extends _UserModel {
       @required this.gender,
       @required this.city,
       @required this.createdDate,
+      @required this.education,
       this.point = 0})
       : assert(age != null),
         assert(gender != null),
         assert(city != null),
         assert(createdDate != null),
+        assert(education != null),
         assert(point != null),
         super._();
 
@@ -178,13 +192,15 @@ class _$_UserModel extends _UserModel {
   final CityModel city;
   @override
   final int createdDate;
+  @override
+  final Education education;
   @JsonKey(defaultValue: 0)
   @override
   final int point;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, age: $age, gender: $gender, city: $city, createdDate: $createdDate, point: $point)';
+    return 'UserModel(id: $id, age: $age, gender: $gender, city: $city, createdDate: $createdDate, education: $education, point: $point)';
   }
 
   @override
@@ -202,6 +218,9 @@ class _$_UserModel extends _UserModel {
             (identical(other.createdDate, createdDate) ||
                 const DeepCollectionEquality()
                     .equals(other.createdDate, createdDate)) &&
+            (identical(other.education, education) ||
+                const DeepCollectionEquality()
+                    .equals(other.education, education)) &&
             (identical(other.point, point) ||
                 const DeepCollectionEquality().equals(other.point, point)));
   }
@@ -214,6 +233,7 @@ class _$_UserModel extends _UserModel {
       const DeepCollectionEquality().hash(gender) ^
       const DeepCollectionEquality().hash(city) ^
       const DeepCollectionEquality().hash(createdDate) ^
+      const DeepCollectionEquality().hash(education) ^
       const DeepCollectionEquality().hash(point);
 
   @override
@@ -234,6 +254,7 @@ abstract class _UserModel extends UserModel {
       @required Gender gender,
       @required CityModel city,
       @required int createdDate,
+      @required Education education,
       int point}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
@@ -250,6 +271,8 @@ abstract class _UserModel extends UserModel {
   CityModel get city;
   @override
   int get createdDate;
+  @override
+  Education get education;
   @override
   int get point;
   @override
