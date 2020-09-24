@@ -10,22 +10,17 @@ mixin Mocks {
   static final _tomorrow =
       _initialDay.add(Duration(days: 1)).millisecondsSinceEpoch;
 
-  static final userModel = usersModel.first;
-  static final userJson = usersJson.first;
+  static final user = users.first;
 
-  static final questionModel = questionsModel.first;
-  static final questionJson = questionsJson.first;
+  static final question = questions.first;
 
-  static final voteModel = votesModel.first;
-  static final voteJson = votesJson.first;
+  static final vote = votes.first;
 
-  static final answerModel = answersModel.first;
-  static final answerJson = answersJson.first;
+  static final answer = answers.first;
 
-  static final cityModel = citiesModel.first;
-  static final cityJson = citiesJson.first;
+  static final city = cities.first;
 
-  static final usersModel = [
+  static final users = [
     UserModel(
         id: "1",
         point: 10,
@@ -44,7 +39,7 @@ mixin Mocks {
         point: 10,
         age: 27,
         gender: Gender.MALE,
-        education: Education.BACHELOR,
+        education: Education.MASTER,
         city: CityModel(
             countryCode: "tr",
             langCode: "tr",
@@ -54,38 +49,7 @@ mixin Mocks {
         createdDate: _initialDay.millisecondsSinceEpoch)
   ];
 
-  static final usersJson = [
-    {
-      "id": "1",
-      "age": 27,
-      "gender": "OTHERS",
-      "city": {
-        "countryCode": "tr",
-        'countryName': 'Turkey',
-        "langCode": "tr",
-        "name": "İstanbul",
-        "utc": 3
-      },
-      "point": 10,
-      "createdDate": _initialDay.millisecondsSinceEpoch
-    },
-    {
-      "id": "2",
-      "age": 27,
-      "gender": "MALE",
-      "city": {
-        "countryCode": "tr",
-        'countryName': 'Turkey',
-        "langCode": "tr",
-        "name": "Antalya",
-        "utc": 3
-      },
-      "point": 10,
-      "createdDate": _initialDay.millisecondsSinceEpoch
-    }
-  ];
-
-  static final questionsModel = [
+  static final questions = [
     QuestionModel(
         id: "1",
         header: "header",
@@ -118,48 +82,17 @@ mixin Mocks {
         imageUrl: "imageurl.com"),
   ];
 
-  static final questionsJson = [
-    {
-      "id": "1",
-      "header": "header",
-      "content": "content",
-      "startDate": _yesterday,
-      "endDate": _tomorrow,
-      "isActive": true,
-      "answers": ["1", "2"],
-      "city": {
-        "countryCode": "tr",
-        'countryName': 'Turkey',
-        "langCode": "tr",
-        "name": "İstanbul",
-        "utc": 3
-      },
-      "imageUrl": "imageurl.com",
-      'likes': 0,
-      'dislikes': 0
-    },
-    {
-      "id": "2",
-      "header": "header",
-      "content": "content",
-      "startDate": _now,
-      "endDate": _tomorrow,
-      "isActive": false,
-      "answers": ["3", "4"],
-      "city": {
-        "countryCode": "tr",
-        "langCode": "tr",
-        "name": "İstanbul",
-        'countryName': 'Turkey',
-        "utc": 3
-      },
-      "imageUrl": "imageurl.com",
-      'likes': 0,
-      'dislikes': 0
-    },
-  ];
-
-  static final votesModel = [
+  /*
+  1. oy 1. kullanıcıya ait.
+  1. soruya 1. aynıtı vermiş
+  ---
+  2. oy 2. kullanıcıya ait.
+  1. soruya 2. yanıtı vermiş.
+  ---
+  3. oy 2. kullanıcıya ait.
+  2. soruya 1.(id: "3") yanıtı vermiş
+   */
+  static final votes = [
     VoteModel(
       id: "1",
       userID: "1",
@@ -194,59 +127,31 @@ mixin Mocks {
       createdDate: _initialDay.millisecondsSinceEpoch,
     ),
   ];
-  static final votesJson = [
-    {
-      "userID": "1",
-      "questionID": "1",
-      "answerID": "1",
-      "id": "1",
-      "createdDate": _initialDay.millisecondsSinceEpoch,
-      'city': CityModel.cities.first.toJson(),
-      'age': 18,
-      'gender': 'MALE',
-    },
-    {
-      "userID": "2",
-      "questionID": "2",
-      "answerID": "3",
-      "id": "2",
-      'city': CityModel.cities.first.toJson(),
-      'age': 18,
-      'gender': 'MALE',
-      "timeStamp": _initialDay.millisecondsSinceEpoch,
-    }
-  ];
 
-  static final answersModel = [
+  static final answers = [
     AnswerModel(
         id: "1",
-        content: "content",
-        imageUrl: "imageUrl",
+        content: "content1",
+        imageUrl: "imageUrl1",
         color: MyColor.AMBER),
     AnswerModel(
         id: "2",
-        content: "content",
-        imageUrl: "imageUrl",
-        color: MyColor.AMBER),
+        content: "content2",
+        imageUrl: "imageUrl2",
+        color: MyColor.YELLOW),
     AnswerModel(
         id: "3",
-        content: "content",
-        imageUrl: "imageUrl",
-        color: MyColor.AMBER),
+        content: "content3",
+        imageUrl: "imageUrl3",
+        color: MyColor.RED),
     AnswerModel(
         id: "4",
-        content: "content",
-        imageUrl: "imageUrl",
-        color: MyColor.AMBER),
-  ];
-  static final answersJson = [
-    {"id": "1", "content": "content", "imageUrl": "imageUrl", "color": "AMBER"},
-    {"id": "2", "content": "content", "imageUrl": "imageUrl", "color": "AMBER"},
-    {"id": "3", "content": "content", "imageUrl": "imageUrl", "color": "AMBER"},
-    {"id": "4", "content": "content", "imageUrl": "imageUrl", "color": "AMBER"}
+        content: "content4",
+        imageUrl: "imageUrl4",
+        color: MyColor.GREY),
   ];
 
-  static final citiesModel = [
+  static final cities = [
     CityModel(
       countryCode: "tr",
       name: "İstanbul",
@@ -261,10 +166,5 @@ mixin Mocks {
       utc: 3,
       countryName: 'Turkey',
     )
-  ];
-
-  static final citiesJson = [
-    {"countryCode": "tr", "name": "İstanbul", "langCode": "tr", "utc": 3},
-    {"countryCode": "tr", "name": "Antalya", "langCode": "tr", "utc": 3},
   ];
 }

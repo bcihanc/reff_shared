@@ -25,6 +25,18 @@ abstract class UserModel with _$UserModel {
       DateTime.now().year -
       DateTime.fromMillisecondsSinceEpoch(createdDate).year +
       age;
+
+  static final initial = UserModel(
+      age: 32,
+      gender: Gender.MALE,
+      education: Education.BACHELOR,
+      city: CityModel(
+          countryCode: "tr",
+          name: "İstanbul",
+          utc: 3,
+          langCode: "tr",
+          countryName: 'Turkey'),
+      createdDate: DateTime.now().millisecondsSinceEpoch);
 }
 
 enum Gender { MALE, FEMALE, OTHERS }

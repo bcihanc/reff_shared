@@ -1,28 +1,31 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:logging/logging.dart';
 import 'package:reff_shared/core/services/services.dart';
+import 'package:reff_shared/core/services/base_firestore_api.dart';
 import 'package:reff_shared/core/utils/constants.dart';
 import 'package:reff_shared/core/models/models.dart';
 
 abstract class BaseResultApi {
   Future<ResultModel> getByQuestion(String questionID);
-  Future<String> create(ResultModel result);
-  Future<String> createFromQuestion(String questionID);
+  Future<String> add(ResultModel result);
+  Future<String> addFromQuestion(String questionID);
   Future<Map<String, List<VoteModel>>> createAnswerWithVotes(String questionID);
-  Future<void> remove(String resultID);
+  Future<bool> remove(String resultID);
+  Future<bool> isHaveResultByQuestionID(String questionID);
 }
 
-class ResultFirestoreApi implements BaseResultApi {
-  final _logger = Logger("ResultFirestoreApi");
-
-  FirebaseFirestore _instance;
-
-  ResultFirestoreApi({FirebaseFirestore instance}) {
-    _instance = instance ?? FirebaseFirestore.instance;
-  }
+class ResultFirestoreApi extends BaseFirestoreApi implements BaseResultApi {
+  ResultFirestoreApi({FirebaseFirestore instance})
+      : super(
+            path: CollectionNames.collectionNameResults,
+            instance: instance ?? FirebaseFirestore.instance,
+            logger: Logger("ResultFirestoreApi"));
 
   Future<ResultModel> getByQuestion(String questionID) async {
-    final snapshot = await _instance
+    assert(questionID != null && questionID.isNotEmpty);
+    if (questionID == null && questionID.isEmpty) return null;
+
+    final snapshot = await instance
         .collection(CollectionNames.collectionNameResults)
         .where("questionID", isEqualTo: questionID)
         .get();
@@ -34,17 +37,18 @@ class ResultFirestoreApi implements BaseResultApi {
     }
   }
 
-  Future<String> create(ResultModel result) async {
-    final doc = await _instance
-        .collection(CollectionNames.collectionNameResults)
-        .add(result.toJson());
+  Future<String> add(ResultModel result) async {
+    assert(result != null);
+    if (result == null) return null;
 
-    final withID = result.copyWith.call(id: doc.id);
-    await doc.set(withID.toJson());
-    return doc.id;
+    final id = await addData(result.toJson());
+    return id;
   }
 
-  Future<String> createFromQuestion(String questionID) async {
+  Future<String> addFromQuestion(String questionID) async {
+    assert(questionID != null && questionID.isNotEmpty);
+    if (questionID == null && questionID.isEmpty) return null;
+
     final withVotes = await createAnswerWithVotes(questionID);
 
     final agesMap = ResultModelHelper.createAgeMap(withVotes);
@@ -60,11 +64,14 @@ class ResultFirestoreApi implements BaseResultApi {
         cityNameMap: citiesNameMap,
         educationMap: educationMap);
 
-    return await create(result);
+    return await add(result);
   }
 
   Future<Map<String, List<VoteModel>>> createAnswerWithVotes(
       String questionID) async {
+    assert(questionID != null && questionID.isNotEmpty);
+    if (questionID == null && questionID.isEmpty) return null;
+
     final answers = await AnswerFirestoreApi().getsByQuestion(questionID);
 
     final answersWithVotes = <String, List<VoteModel>>{};
@@ -80,21 +87,28 @@ class ResultFirestoreApi implements BaseResultApi {
   }
 
   @override
-  Future<void> remove(String resultID) async {
-    await _instance
-        .collection(CollectionNames.collectionNameResults)
-        .doc(resultID)
-        .delete();
+  Future<bool> remove(String id) async {
+    assert(id != null && id.isNotEmpty);
+    if (id == null && id.isEmpty) return null;
 
-    final doc = await _instance
+    final result = await removeData(id);
+    return result;
+  }
+
+  @override
+  Future<bool> isHaveResultByQuestionID(String questionID) async {
+    assert(questionID != null && questionID.isNotEmpty);
+    if (questionID == null && questionID.isEmpty) return null;
+
+    final snapshot = await instance
         .collection(CollectionNames.collectionNameResults)
-        .doc(resultID)
+        .where("questionID", isEqualTo: questionID)
         .get();
 
-    final result = doc.exists;
-
-    result
-        ? _logger.info("$resultID kaldırıldı")
-        : _logger.info("$resultID kaldırılamadı‍");
+    if (snapshot.docs.isNotEmpty) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

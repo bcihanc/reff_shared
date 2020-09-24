@@ -26,3 +26,12 @@ abstract class QuestionModel with _$QuestionModel {
 extension TimeStamp on int {
   DateTime toDateTime() => DateTime.fromMillisecondsSinceEpoch(this);
 }
+
+extension QuestionsExtension on List<QuestionModel> {
+  List<QuestionModel> dateTimeCorrection() {
+    return where((element) =>
+                element.startDate < DateTime.now().millisecondsSinceEpoch)
+            .toList() ??
+        <DateTime>[];
+  }
+}
