@@ -12,6 +12,7 @@ AnswerModel _$AnswerModelFromJson(Map<String, dynamic> json) {
   return _AnswerModel.fromJson(json);
 }
 
+/// @nodoc
 class _$AnswerModelTearOff {
   const _$AnswerModelTearOff();
 
@@ -28,11 +29,18 @@ class _$AnswerModelTearOff {
       color: color,
     );
   }
+
+// ignore: unused_element
+  AnswerModel fromJson(Map<String, Object> json) {
+    return AnswerModel.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AnswerModel = _$AnswerModelTearOff();
 
+/// @nodoc
 mixin _$AnswerModel {
   @nullable
   String get id;
@@ -45,6 +53,7 @@ mixin _$AnswerModel {
   $AnswerModelCopyWith<AnswerModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $AnswerModelCopyWith<$Res> {
   factory $AnswerModelCopyWith(
           AnswerModel value, $Res Function(AnswerModel) then) =
@@ -56,6 +65,7 @@ abstract class $AnswerModelCopyWith<$Res> {
       MyColor color});
 }
 
+/// @nodoc
 class _$AnswerModelCopyWithImpl<$Res> implements $AnswerModelCopyWith<$Res> {
   _$AnswerModelCopyWithImpl(this._value, this._then);
 
@@ -79,6 +89,7 @@ class _$AnswerModelCopyWithImpl<$Res> implements $AnswerModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$AnswerModelCopyWith<$Res>
     implements $AnswerModelCopyWith<$Res> {
   factory _$AnswerModelCopyWith(
@@ -92,6 +103,7 @@ abstract class _$AnswerModelCopyWith<$Res>
       MyColor color});
 }
 
+/// @nodoc
 class __$AnswerModelCopyWithImpl<$Res> extends _$AnswerModelCopyWithImpl<$Res>
     implements _$AnswerModelCopyWith<$Res> {
   __$AnswerModelCopyWithImpl(
@@ -118,6 +130,8 @@ class __$AnswerModelCopyWithImpl<$Res> extends _$AnswerModelCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_AnswerModel implements _AnswerModel {
   const _$_AnswerModel(
       {@nullable this.id,

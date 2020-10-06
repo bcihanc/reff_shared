@@ -12,6 +12,7 @@ ResultModel _$ResultModelFromJson(Map<String, dynamic> json) {
   return _ResultModel.fromJson(json);
 }
 
+/// @nodoc
 class _$ResultModelTearOff {
   const _$ResultModelTearOff();
 
@@ -34,11 +35,18 @@ class _$ResultModelTearOff {
       educationMap: educationMap,
     );
   }
+
+// ignore: unused_element
+  ResultModel fromJson(Map<String, Object> json) {
+    return ResultModel.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ResultModel = _$ResultModelTearOff();
 
+/// @nodoc
 mixin _$ResultModel {
   @nullable
   String get id;
@@ -53,6 +61,7 @@ mixin _$ResultModel {
   $ResultModelCopyWith<ResultModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $ResultModelCopyWith<$Res> {
   factory $ResultModelCopyWith(
           ResultModel value, $Res Function(ResultModel) then) =
@@ -67,6 +76,7 @@ abstract class $ResultModelCopyWith<$Res> {
       Map<String, Map<Education, int>> educationMap});
 }
 
+/// @nodoc
 class _$ResultModelCopyWithImpl<$Res> implements $ResultModelCopyWith<$Res> {
   _$ResultModelCopyWithImpl(this._value, this._then);
 
@@ -105,6 +115,7 @@ class _$ResultModelCopyWithImpl<$Res> implements $ResultModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$ResultModelCopyWith<$Res>
     implements $ResultModelCopyWith<$Res> {
   factory _$ResultModelCopyWith(
@@ -121,6 +132,7 @@ abstract class _$ResultModelCopyWith<$Res>
       Map<String, Map<Education, int>> educationMap});
 }
 
+/// @nodoc
 class __$ResultModelCopyWithImpl<$Res> extends _$ResultModelCopyWithImpl<$Res>
     implements _$ResultModelCopyWith<$Res> {
   __$ResultModelCopyWithImpl(
@@ -162,6 +174,8 @@ class __$ResultModelCopyWithImpl<$Res> extends _$ResultModelCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_ResultModel with DiagnosticableTreeMixin implements _ResultModel {
   const _$_ResultModel(
       {@nullable this.id,

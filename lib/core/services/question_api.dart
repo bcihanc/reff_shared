@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:logging/logging.dart';
 import 'package:reff_shared/core/models/models.dart';
 import 'package:reff_shared/core/services/base_firestore_api.dart';
@@ -7,19 +8,25 @@ import 'package:reff_shared/core/utils/constants.dart';
 
 abstract class BaseQuestionApi {
   Future<QuestionModel> get(String questionID);
+
   Stream<List<QuestionModel>> getsSnapshots({
     DateTime afterDateTime,
     bool onlyActiveQuestions,
     CityModel city,
   });
+
   Future<String> add(QuestionModel question);
+
   Future<bool> update(String id, QuestionModel question);
+
   Future<bool> remove(String id);
-  Future<List<QuestionModel>> gets({
-    DateTime afterDateTime,
-    bool onlyActiveQuestions = false,
-    CityModel city,
-  });
+
+  Future<List<QuestionModel>> gets(
+      {DateTime afterDateTime,
+      bool onlyActiveQuestions = false,
+      bool orderByFirstNew = false,
+      CityModel city,
+      int limit = 0});
 
   Stream<List<String>> getUserVotesIDs(String userID, String questionID);
 }
@@ -59,6 +66,7 @@ class QuestionFirestoreApi extends BaseFirestoreApi implements BaseQuestionApi {
     return (data != null) ? QuestionModel.fromJson(data) : null;
   }
 
+  @deprecated
   @override
   Stream<List<QuestionModel>> getsSnapshots({
     DateTime afterDateTime,
@@ -98,10 +106,10 @@ class QuestionFirestoreApi extends BaseFirestoreApi implements BaseQuestionApi {
     final query = instance
         .collection(CollectionNames.collectionNameQuestions)
         .after(afterDateTime)
-        .cityNameFilter(city);
+        .cityNameFilter(city)
+        .onlyIsActive(onlyActiveQuestions);
 
-    final snapshots =
-        await (onlyActiveQuestions ? query.onlyIsActive() : query).get();
+    final snapshots = await query.get();
     return snapshots.docs.map((doc) => doc.id).toList() ?? <String>[];
   }
 
@@ -126,7 +134,6 @@ class QuestionFirestoreApi extends BaseFirestoreApi implements BaseQuestionApi {
     return result;
   }
 
-  // todo: tekrar düzenlemesi gerek
   @override
   Future<bool> remove(String id) async {
     assert(id != null && id.isNotEmpty);
@@ -162,17 +169,26 @@ class QuestionFirestoreApi extends BaseFirestoreApi implements BaseQuestionApi {
   }
 
   @override
-  Future<List<QuestionModel>> gets(
-      {DateTime afterDateTime,
-      bool onlyActiveQuestions = false,
-      CityModel city}) async {
-    final query = instance
+  Future<List<QuestionModel>> gets({
+    DateTime afterDateTime,
+    bool onlyActiveQuestions = false,
+    bool orderByFirstNew = false,
+    int limit = 0,
+    CityModel city,
+  }) async {
+    var query = instance
         .collection(CollectionNames.collectionNameQuestions)
         .after(afterDateTime)
-        .cityNameFilter(city);
+        .cityNameFilter(city)
+        .orderByFirstNew(orderByFirstNew)
+        .onlyIsActive(false);
 
-    final snapshots =
-        await (onlyActiveQuestions ? query.onlyIsActive() : query).get();
+    if (limit > 0) {
+      query = query.limit(limit);
+    }
+
+    final snapshots = await query.get();
+
     return snapshots.docs
             .map((doc) => QuestionModel.fromJson(doc.data()))
             .toList() ??
@@ -181,7 +197,8 @@ class QuestionFirestoreApi extends BaseFirestoreApi implements BaseQuestionApi {
 }
 
 extension QueryExtension on Query {
-  Query onlyIsActive() => where("isActive", isEqualTo: true);
+  Query onlyIsActive([bool state = true]) =>
+      state ? where("isActive", isEqualTo: true) : this;
 
   Query after(DateTime dateTime) {
     return (dateTime != null)
@@ -194,4 +211,7 @@ extension QueryExtension on Query {
         ? where('city.name', whereIn: [city.name, city.countryName])
         : this;
   }
+
+  Query orderByFirstNew([bool state = false]) =>
+      state ? this.orderBy("startDate", descending: true) : this;
 }

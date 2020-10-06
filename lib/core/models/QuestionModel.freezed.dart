@@ -12,6 +12,7 @@ QuestionModel _$QuestionModelFromJson(Map<String, dynamic> json) {
   return _QuestionModel.fromJson(json);
 }
 
+/// @nodoc
 class _$QuestionModelTearOff {
   const _$QuestionModelTearOff();
 
@@ -42,11 +43,18 @@ class _$QuestionModelTearOff {
       isActive: isActive,
     );
   }
+
+// ignore: unused_element
+  QuestionModel fromJson(Map<String, Object> json) {
+    return QuestionModel.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $QuestionModel = _$QuestionModelTearOff();
 
+/// @nodoc
 mixin _$QuestionModel {
   @nullable
   String get id;
@@ -68,6 +76,7 @@ mixin _$QuestionModel {
   $QuestionModelCopyWith<QuestionModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $QuestionModelCopyWith<$Res> {
   factory $QuestionModelCopyWith(
           QuestionModel value, $Res Function(QuestionModel) then) =
@@ -88,6 +97,7 @@ abstract class $QuestionModelCopyWith<$Res> {
   $CityModelCopyWith<$Res> get city;
 }
 
+/// @nodoc
 class _$QuestionModelCopyWithImpl<$Res>
     implements $QuestionModelCopyWith<$Res> {
   _$QuestionModelCopyWithImpl(this._value, this._then);
@@ -136,6 +146,7 @@ class _$QuestionModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$QuestionModelCopyWith<$Res>
     implements $QuestionModelCopyWith<$Res> {
   factory _$QuestionModelCopyWith(
@@ -159,6 +170,7 @@ abstract class _$QuestionModelCopyWith<$Res>
   $CityModelCopyWith<$Res> get city;
 }
 
+/// @nodoc
 class __$QuestionModelCopyWithImpl<$Res>
     extends _$QuestionModelCopyWithImpl<$Res>
     implements _$QuestionModelCopyWith<$Res> {
@@ -200,6 +212,8 @@ class __$QuestionModelCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_QuestionModel implements _QuestionModel {
   const _$_QuestionModel(
       {@nullable this.id,

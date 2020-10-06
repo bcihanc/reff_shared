@@ -12,6 +12,7 @@ CityModel _$CityModelFromJson(Map<String, dynamic> json) {
   return _CityModel.fromJson(json);
 }
 
+/// @nodoc
 class _$CityModelTearOff {
   const _$CityModelTearOff();
 
@@ -30,11 +31,18 @@ class _$CityModelTearOff {
       utc: utc,
     );
   }
+
+// ignore: unused_element
+  CityModel fromJson(Map<String, Object> json) {
+    return CityModel.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $CityModel = _$CityModelTearOff();
 
+/// @nodoc
 mixin _$CityModel {
   String get countryCode;
   String get countryName;
@@ -46,6 +54,7 @@ mixin _$CityModel {
   $CityModelCopyWith<CityModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $CityModelCopyWith<$Res> {
   factory $CityModelCopyWith(CityModel value, $Res Function(CityModel) then) =
       _$CityModelCopyWithImpl<$Res>;
@@ -57,6 +66,7 @@ abstract class $CityModelCopyWith<$Res> {
       int utc});
 }
 
+/// @nodoc
 class _$CityModelCopyWithImpl<$Res> implements $CityModelCopyWith<$Res> {
   _$CityModelCopyWithImpl(this._value, this._then);
 
@@ -84,6 +94,7 @@ class _$CityModelCopyWithImpl<$Res> implements $CityModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$CityModelCopyWith<$Res> implements $CityModelCopyWith<$Res> {
   factory _$CityModelCopyWith(
           _CityModel value, $Res Function(_CityModel) then) =
@@ -97,6 +108,7 @@ abstract class _$CityModelCopyWith<$Res> implements $CityModelCopyWith<$Res> {
       int utc});
 }
 
+/// @nodoc
 class __$CityModelCopyWithImpl<$Res> extends _$CityModelCopyWithImpl<$Res>
     implements _$CityModelCopyWith<$Res> {
   __$CityModelCopyWithImpl(_CityModel _value, $Res Function(_CityModel) _then)
@@ -126,6 +138,8 @@ class __$CityModelCopyWithImpl<$Res> extends _$CityModelCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_CityModel implements _CityModel {
   const _$_CityModel(
       {@required this.countryCode,
@@ -225,6 +239,7 @@ CountryModel _$CountryModelFromJson(Map<String, dynamic> json) {
   return _CountryModel.fromJson(json);
 }
 
+/// @nodoc
 class _$CountryModelTearOff {
   const _$CountryModelTearOff();
 
@@ -243,11 +258,18 @@ class _$CountryModelTearOff {
       cities: cities,
     );
   }
+
+// ignore: unused_element
+  CountryModel fromJson(Map<String, Object> json) {
+    return CountryModel.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $CountryModel = _$CountryModelTearOff();
 
+/// @nodoc
 mixin _$CountryModel {
   String get name;
   CityModel get capital;
@@ -259,6 +281,7 @@ mixin _$CountryModel {
   $CountryModelCopyWith<CountryModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $CountryModelCopyWith<$Res> {
   factory $CountryModelCopyWith(
           CountryModel value, $Res Function(CountryModel) then) =
@@ -273,6 +296,7 @@ abstract class $CountryModelCopyWith<$Res> {
   $CityModelCopyWith<$Res> get capital;
 }
 
+/// @nodoc
 class _$CountryModelCopyWithImpl<$Res> implements $CountryModelCopyWith<$Res> {
   _$CountryModelCopyWithImpl(this._value, this._then);
 
@@ -308,6 +332,7 @@ class _$CountryModelCopyWithImpl<$Res> implements $CountryModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$CountryModelCopyWith<$Res>
     implements $CountryModelCopyWith<$Res> {
   factory _$CountryModelCopyWith(
@@ -325,6 +350,7 @@ abstract class _$CountryModelCopyWith<$Res>
   $CityModelCopyWith<$Res> get capital;
 }
 
+/// @nodoc
 class __$CountryModelCopyWithImpl<$Res> extends _$CountryModelCopyWithImpl<$Res>
     implements _$CountryModelCopyWith<$Res> {
   __$CountryModelCopyWithImpl(
@@ -353,6 +379,8 @@ class __$CountryModelCopyWithImpl<$Res> extends _$CountryModelCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_CountryModel implements _CountryModel {
   const _$_CountryModel(
       {@required this.name,

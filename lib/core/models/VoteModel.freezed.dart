@@ -12,6 +12,7 @@ VoteModel _$VoteModelFromJson(Map<String, dynamic> json) {
   return _VoteModel.fromJson(json);
 }
 
+/// @nodoc
 class _$VoteModelTearOff {
   const _$VoteModelTearOff();
 
@@ -38,11 +39,18 @@ class _$VoteModelTearOff {
       education: education,
     );
   }
+
+// ignore: unused_element
+  VoteModel fromJson(Map<String, Object> json) {
+    return VoteModel.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $VoteModel = _$VoteModelTearOff();
 
+/// @nodoc
 mixin _$VoteModel {
   @nullable
   String get id;
@@ -59,6 +67,7 @@ mixin _$VoteModel {
   $VoteModelCopyWith<VoteModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $VoteModelCopyWith<$Res> {
   factory $VoteModelCopyWith(VoteModel value, $Res Function(VoteModel) then) =
       _$VoteModelCopyWithImpl<$Res>;
@@ -76,6 +85,7 @@ abstract class $VoteModelCopyWith<$Res> {
   $CityModelCopyWith<$Res> get city;
 }
 
+/// @nodoc
 class _$VoteModelCopyWithImpl<$Res> implements $VoteModelCopyWith<$Res> {
   _$VoteModelCopyWithImpl(this._value, this._then);
 
@@ -122,6 +132,7 @@ class _$VoteModelCopyWithImpl<$Res> implements $VoteModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$VoteModelCopyWith<$Res> implements $VoteModelCopyWith<$Res> {
   factory _$VoteModelCopyWith(
           _VoteModel value, $Res Function(_VoteModel) then) =
@@ -142,6 +153,7 @@ abstract class _$VoteModelCopyWith<$Res> implements $VoteModelCopyWith<$Res> {
   $CityModelCopyWith<$Res> get city;
 }
 
+/// @nodoc
 class __$VoteModelCopyWithImpl<$Res> extends _$VoteModelCopyWithImpl<$Res>
     implements _$VoteModelCopyWith<$Res> {
   __$VoteModelCopyWithImpl(_VoteModel _value, $Res Function(_VoteModel) _then)
@@ -180,6 +192,8 @@ class __$VoteModelCopyWithImpl<$Res> extends _$VoteModelCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_VoteModel implements _VoteModel {
   const _$_VoteModel(
       {@nullable this.id,
