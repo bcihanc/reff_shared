@@ -11,7 +11,7 @@ abstract class QuestionModel with _$QuestionModel {
       @required String header,
       @nullable String content,
       @nullable List<String> answers,
-      @nullable String imageUrl,
+      @required String imageUrl,
       @required int startDate,
       @required int endDate,
       @required CityModel city,
